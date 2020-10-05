@@ -179,15 +179,87 @@ Lab Infra
 2. centos 2
 3. Windows
 
+
+
+What APP you want to run in Container?
+========================================
+Jenkins
+	- Java based
+	- WEB - 8080
+	- Agent - 50000
+
+OS 				-> JDK -> Jenkins
+==================================
+B FS -> R FS -> A FS
+	==============
+		Image
+	DEBIAN + JDK + JENKINS
+
+ 11  docker -v
+   12  docker help
+   13  clear
+   14  docker help run
+   15  clear
+   16  docker info
+   17  clear
+   18  docker version
+   19  clear
+   20  docker images
+   21  history
+   22  clear
+   23  docker imagfes
+   24  docker imagesd
+   25  docker images
+   26  clear
+   27  docker images
+   28  docker pull jenkins
+   29  docker images
+   30  clerar
+   31  clear
+   32  clerar
+   33  docker images
+   34  docker create jenkins
+   35  docker ps
+   36  docker ps -a
+   37  docker start e1e1d3371703
+   38  docker ps
+   39  clear
+   40  docker create jenkins
+   41  docker ps -a
+   42  docker create jenkins
+   43  docker ps -a
+   44  docker start 254891976add
+   45  clear
+   46  docker ps -a
+   47  docker stop 254891976add
+   48  docker ps -a
+   49  docker stop e1e1d3371703
+   50  docker start 254891976add b3bcb040243c e1e1d3371703
+   51  docker ps
+   52  docker ps
+   53  clear
+   54  docker ps
+   55  docker restart 254891976add b3bcb040243c
+   56  docker ps
+   57  clear
+   58  docker ps
+   59  docker pause 254891976add
+   60  docker ps
+   61  docker unpause 254891976add
+   62  docker ps
+   63  clear
+   64  docker ps
+   65  docker kill 254891976add
+   66  docker ps
+   67  docker ps -a
+   68  clear
+   69  docker ps -a
+   70  docker rm 254891976add
+   71  docker ps
+   72  docker ps -a
+   73  history
+
 Assignment
 =============================
 Pause vs Unpause
 Stop Vs Kill
-
-
-
-
-
-
-
-
