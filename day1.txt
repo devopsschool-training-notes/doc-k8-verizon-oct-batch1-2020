@@ -263,3 +263,118 @@ Assignment
 =============================
 Pause vs Unpause
 Stop Vs Kill
+======================================
+Important of PID1?
+==========================================
+PHYSICAL Server		Virtual Server		Container 
+is running		is running		is running
+as long as		as long as		as long as
+PID 1 is running	PID 1 is running	PID 1 is running	
+---------------------------------------------------------------
+PID 1 is systemd	PID 1 is systemd	PID 1 can be any executables
+
+
+PROOF
+-=========================
+ 81  ls
+   82  ps -eaf
+   83  cleart
+   84  clear
+   85  docker ps
+   86  cl;ear
+   87  clear
+   88  ps -eaf
+   89  clear
+   90  docker ps
+   91  docker exec b3bcb040243c ps -eaf
+   92  docker exec e1e1d3371703 ps -eaf
+   93  docker ps
+   94  docker inspect b3bcb040243c
+   95  clear
+   96  docker ps
+   97  docker exec b3bcb040243c df -kh
+   98  docker exec e1e1d3371703 df -kh
+   99  clear
+  100  docker ps
+  101  docker exec b3bcb040243c ls /var/jenkins_home
+  102  clear
+  103  docker exec b3bcb040243c touch /var/jenkins_home/devopsschool.txt
+  104  docker exec b3bcb040243c ls /var/jenkins_home
+  105  docker exec e1e1d3371703 ls /var/jenkins_home
+
+
+
+
+
+
+
+How to access Container?
+=================================
+How can i get inside a container?
+
+exec
+	This would execute an executables inside a container,.
+	with exec & -it & /bin/bash - You can go inside a container.
+  111  docker ps
+  112  docker exec b3bcb040243c ls
+  113  docker exec b3bcb040243c ps
+  114  clear
+  115  docker exec b3bcb040243c ddddd
+  116  docker ps
+  117  docker exec -it b3bcb040243c /bin/bash
+  118  docker exec -it b3bcb040243c /bin/bash
+
+
+attach
+	IT get attached to a session of PID1
+
+'
+How to come out of the container without Exiting PID1?
+Control + P + Q
+
+
+How can i access app running from outside?
+
+docker run -d -p 8080:8080 jenkins
+
+ 119  clear
+  120  history
+  121  clear
+  122  ps
+  123  clear
+  124  docker ps
+  125  docker exec b3bcb040243c ps -eaf
+  126  docker attach b3bcb040243c
+  127  docker ps -a
+  128  clear
+  129  clear
+  130  docker run ubuntu
+  131  docker ps
+  132  docker ps -a
+  133  docker run -itd ubuntu
+  134  docker ps -a
+  135  docker exec 34a298cc2bf1 ps -eaf
+  136  docker attach 34a298cc2bf1
+  137  docker ps -a
+  138  clear
+  139  docker ps
+  140  docker ps -a
+  141  docker start 34a298cc2bf1
+  142  docker ps
+  143  docker attach 34a298cc2bf1
+  144  docker ps
+  145  clear
+  146  docker ps
+  147  docker inspect 34a298cc2bf1
+  148  clear
+  149  docker ps
+  150  docker inspect e1e1d3371703+
+  151  docker inspect e1e1d3371703
+  152  ping 172.17.0.4+
+  153  ping 172.17.0.4
+  154  curl http://172.17.0.4:8080
+  155  clear
+  156  docker run -d -p 8080:8080 jenkins
+  157  docker ps
+  158  docker run -d -p 8090:8080 jenkins
+
