@@ -1,0 +1,193 @@
+===================
+Demo - By Me.
+Lab Env - 
+==============
+Start - 9:30 AM - 6:30 PM
+========================
+2 BREAK - 15 mins - 
+		11:AM
+		4: PM
+1 Lunch - 1 - 2PM
+=========================
+Rajesh Kumar - 8105843520
+=========================
+Docker - 2 Days
+Kubernetes - 3 Days
+=========================
+Pre Test - Today
+		1 Docker
+		- Docker Essential Quiz - 1
+		https://www.devopsschool.com/lms/mod/quiz/view.php?id=250
+		1 Kubernetes 
+		- Kubernetes Essential Quiz - 1
+		https://www.devopsschool.com/lms/mod/quiz/view.php?id=319
+		= 30 
+Post test - 5th 4PM IST
+		1 Docker
+		1 Kubernetes 
+============================================
+============================================
+What is Docker?
+----------------------------
+	Container mgmt tool
+	Platform for Container
+	Release
+		CE - Community Edi - Free and Open Source
+		EE - Enterprise - Paid
+	Golang
+	Written by Soloman Hykes
+	19.X
+	
+
+	tool
+		Saving cost
+		Saving time
+		Imp Eff*
+
+	What is Container?
+	-----------------------------
+	Container is a initialization of 
+				1 USER SPACE NS
+				with their own
+					1 NET NS
+					1 PID NS
+					1 MNT NS
+	Container is light weight, Independent app RUN TIME ENV.
+
+How can you RUN ANY app?
+or
+What are the components (IN OS) we need to have to run ANY APP aka Any software??
+==================================================================	
+PHYSICAL Server (Internet) --> Virutal Server --> Container
+==============================================
+OS				OS
+----------------------------------------------
+Kernal
+	Namespace
+		PID NS			1
+		MNT NS			1
+		NET NS			1
+		USER NS 		N number of time
+	Cgroups
+		allocating CPU and RAM to PID.
+	Security
+		Capabilties	
+				Root or non-root access for USER
+
+==================PROBLEM============================
+How can we RUN more apps with less HARDWARE? - Saving cost for running app in DATA Center.
+How can we deploy and rollback faster? - Save time - 
+How can we REDUCE a waste of running app in Data center?
+
+=============================
+PC = 	Personal 	Computing
+	For Human	CPU+RAM+Storage
+
+
+	OS was designed for PC - For human - 
+	NOT FOR RUNNING APPS in Datacenter
+
+=================================
+Now we running APPS Not in PC but DATA CENTER.
+
+OS - WE WOULD NOT ALLOW THIS.
+====================================================
+What is MNT?
+==================
+SYSTEM FILESYSTEM(S)
+	BOOT FS AKA KERNAL FILESYSTEM - CAN NOT SEE DURING RUN TIME.
+	ROOT FS AKA C drive 
+	USER FS
+	APP FS
+====================================================
+Qs
+At KERNEL level PID is only 1. At docker level if it creates it's own PID p/user - whats the gaurantee that a PID created under user-a doesnt clash with another PID created under user-b?
+
+Other tool - Container Interface
+==========================
+https://www.devopsschool.com/blog/list-of-top-container-runtime-interface-projects/
+
+Architecture of Docker?
+=================================
+Human  --> Docker Client --REST--> Docker Deamon --> ContainerD -> Kernal
+	  =======================================	
+			Docker Engine 
+			Container Gets created.
+
+
+Docker Components?
+=================================
+Docker Engine
+Docker Images
+	is a collecitons of filesystem(s) which represent following..
+		ROOT FS AKA C drive 
+		USER FS
+		APP FS
+	Whatever you have in image - You have in Contaier
+	One Image - You can create multiple container
+
+Docker Registry
+	A Place where you can find REPOSITORY
+		REPOSITORY has filesystem(s) aka Images.
+	PUB
+		hub.docker.com
+		google registry
+
+	PVT
+		Artifactory
+		Nexus
+		ECR
+
+Docker Container
+	You run docker image
+			ONE USER NS get created,
+			ONE MOUNT get attached from the Image filesystems
+			ONE PID NS get attached to USER
+			ONE NET NS get attached to USER
+
+Docker Workflow Aka How Docker works!!!
+=================================
+
+HUman -> Docker Client --> Docker Deamon
+			CHECK - IF IMAGE EXIST in LOCAL Registry
+					Create a container 
+				IF IMAGE DO NOT EXIST in LOCAL Registry	
+					Download Image from Registrty to Local
+					Create a container
+				
+
+VMs LifeCycle
+=================================
+Create -> Start -> Stop -> Start -> Restart -> Pause -> Unpause -> kill -> Remove
+
+Container LifeCycle
+=================================
+Create -> Start -> Stop -> Start -> Restart -> Pause -> Unpause -> kill -> Remove
+
+
+How to install Docker Engine?
+=====================================
+13.232.219.139
+centos
+https://www.devopsschool.com/tutorial/docker/install-config/docker-install-commuityedition-centos-rhel.html
+- DOCKER NEED ROOT or USER has to be part of Group called "Docker"
+
+Lab Infra
+--------------------
+3 Vms
+1. centos 1 - Docker
+2. centos 2
+3. Windows
+
+Assignment
+=============================
+Pause vs Unpause
+Stop Vs Kill
+
+
+
+
+
+
+
+
