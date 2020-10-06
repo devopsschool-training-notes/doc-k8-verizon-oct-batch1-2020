@@ -1,0 +1,77 @@
+Commands
+===================
+https://www.devopsschool.com/tutorial/docker/commands/index.html
+
+run
+=====================================
+pull -> create -> start -> Attached to a container
+				(PID 1)
+run -d
+=====================================
+pull -> create -> start -> DO NOT Attached to a container
+				(PID 1)
+
+ 175  docker run ubuntu
+  176  docker ps
+  177  docker ps -a
+  178  docker run ubuntu df -kh
+  179  docker ps -a
+  180  clear
+  181  docker run jenkins
+  182  docker ps -a
+  183  history
+  184  clear
+  185  docker run -d jenkins
+  186  docker ps
+  187  docker run -d ubuntu
+  188  docker ps -a
+  189  clear
+  190  docker run -it -d ubuntu
+  191  docker ps
+
+cp
+======================
+ 196  touch devopsschool.txt
+  197  ls
+  198  docker cp devopsschool.txt a86b0441a3dc:/opt
+  199  docker exec a86b0441a3dc ls /opt
+  200  ls
+  201  rm devopsschool.txt
+  202  ls
+  203  clear
+  204  ls
+  205  docker cp a86b0441a3dc:/opt/devopsschool.txt .
+
+diff
+	================
+	files 
+		ADDED
+		CHANGED
+		DELETED 
+			after a container got created.
+
+ 167  docker diff a86b0441a3dc
+
+port
+=================
+exposed port
+=================
+
+164  docker images
+  165  docker rename  40f410c94f20 raj1
+  166  docker ps
+  167  clear
+  168  docker run -itd --name web2 ubuntu
+  169  docker ps
+
+Assignment
+==========================
+update	Update configuration of one or more containers
+wait	Block until one or more containers stop, then print their exit codes
+
+===================
+docker run --rm -itd ubuntu
+===================
+docker help run
+
+15.206.68.21
