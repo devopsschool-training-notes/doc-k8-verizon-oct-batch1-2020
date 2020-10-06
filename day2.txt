@@ -400,9 +400,30 @@ Step 6 - docker push reponame
 
 
 2. Using Dockerfile.
+=====================================
+Contains Instructions
+Each Instruction is ONE LAYER
+				DATA
+				META
 
+FROM ubuntu
+MAINTAINER Rajesh Kumar rajesh@devopsschool.com
+ARG pack=git
+RUN apt-get update 
+RUN apt-get install ${pack} -y
+ENV ROCK_HOME /var/rock
+COPY index.html /tmp
 
+docker build -t fff .
 
+FROM ubuntu
+MAINTAINER Rajesh Kumar rajesh@devopsschool.com
+RUN touch /opt/rajesh1.txt
+RUN touch /opt/rajesh2.txt
+RUN touch /opt/rajesh3.txt
 
+docker build -f myfile -t myfile .
 
+Assignment
+https://www.devopsschool.com/blog/dockerfile-lab-exercise-1/
 
