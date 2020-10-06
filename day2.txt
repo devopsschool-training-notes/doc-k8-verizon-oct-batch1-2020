@@ -338,6 +338,65 @@ Base- Ubuntu
   525  docker ps
   526  docker exec 854c0632a3fc git
   527  history
+================================================
+How to share an image?
+=====================================
+1. Using Tar ball
+
+  533  clear
+  534  docker images
+  535  docker save -o ub-up-java-git-apache.tar ub-up-java-git-apache
+  536  ls
+  537  docker images
+  538  docker rmi ub-up-java-git-apache
+  539  docker images
+  540  docker rmi ubuntu
+  541  clear
+  542  ls
+  543  ls
+  544  docker load -i ub-up-java-git-apache.tar
+  545  docker images
+
+
+2. Using hub.docker.com
+Step 1 - Register at hub.docker.com
+Step 2 - Login to hub.docker.com
+Step 3 - Create a Empty repo
+Step 4 - Make sure Local Repo of Image and Remote Repo Name MUST match.
+Step 5 - docker login
+Step 6 - docker push reponame
+
+3. Using Private repo
+		ECR
+		Artifactory
+
+ 547  docker images
+  548  clear
+  549  docker images
+  550  docker tag ub-up-java-git-apache devopsschools/ub-up-java-git-apache
+  551  docker images
+  552  docker login
+  553  docker logout
+  554  docker login
+  555  clear
+  556  docker login
+  557  docker images
+  558  docker push devopsschools/ub-up-java-git-apache
+  559  clear
+  560  docker images
+  561  docker run -itd devopsschools/ub-up-java-git-apache
+  562  docker ps
+  563  touch devopsv2.txt
+  564  ls
+  565  docker cp devopsv2.txt anaconda-ks.cfg original-ks.cfg ef2f538eeb6a:/opt
+  566  docker cp devopsv2.txt anaconda-ks.cfg original-ks.cfg ef2f538eeb6a:/opt
+  567  clear
+  568  docker cp devopsv2.txt ef2f538eeb6a:/opt
+  569  docker exec ef2f538eeb6a los /opt
+  570  docker exec ef2f538eeb6a ls /opt
+  571  docker commit -m"v2" -a"rajesh" ef2f538eeb6a devopsschools/ub-up-java-git-apache:v2
+  572  docker images
+  573  docker push devopsschools/ub-up-java-git-apache:v2
 
 
 2. Using Dockerfile.
