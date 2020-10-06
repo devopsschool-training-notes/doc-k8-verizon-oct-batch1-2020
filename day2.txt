@@ -280,6 +280,67 @@ https://www.devopsschool.com/blog/understand-docker-volume-from-beginner-to-deep
   476  find . -name devops.txt
   477  ls
   478  history
+==============================================
+==============================================
+How to create a Docker Image?
+1. Using Exisitng Container
+
+Requirement
+===================
+Base- Ubuntu
+- java
+- git
+- apache
+
+  501  ls
+  502  docker ps -a
+  503  docker run -itd ubuntu
+  504  docker ps
+  505  docker attach caf700f852b9
+  506  clear
+
+
+ 1  java
+    2  apt-get install openjdk-8-jre
+    3  apt-get update
+    4  clear
+    5  apt-get install openjdk-8-jre
+    6  clear
+    7  ls
+    8  java
+    9  clear
+   10  apt-get install git -y
+   11  git
+   12  apt-get install apache2
+   13  history
+
+
+  507  docker ps
+  508  docker exec caf700f852b9 java
+  509  clear
+  510  docker exec caf700f852b9 git
+  511  clear
+  512  docker exec caf700f852b9 which apache2
+
+
+ 513  history
+  514  clear
+  515  ls
+  516  docker ps
+  517  docker history ubuntu
+  518  docker commit -m
+  519  docker commit -m"ub-up-java-git-apache" -a "Rajesh kumar" caf700f852b9 ub-up-java-git-apache
+  520  docker images
+  521  docker history ub-up-java-git-apache
+  522  docker history ubuntu
+  523  cleaR
+  524  docker run -itd --name ramukaka ub-up-java-git-apache
+  525  docker ps
+  526  docker exec 854c0632a3fc git
+  527  history
+
+
+2. Using Dockerfile.
 
 
 
