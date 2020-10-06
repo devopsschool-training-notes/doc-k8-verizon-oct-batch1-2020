@@ -75,3 +75,142 @@ docker run --rm -itd ubuntu
 docker help run
 
 15.206.68.21
+=======================================================
+
+ 214  clear
+  215  docker ps
+  216  docker wait a183860aa4c4
+  217  docker wait a183860aa4c4
+  218  clear
+  219  docker events
+  220  history
+
+
+ 211  docker ps
+  212  docker attach a86b0441a3dc
+  213  docker stop a183860aa4c4
+  214  docker start a183860aa4c4
+  215  docker kill a183860aa4c4
+  216  clear
+  217  docker ps
+  218  docker logs a86b0441a3dc
+  219  docker logs
+  220  docker ps
+  221  docker logs 40f410c94f20
+  222  clear
+  223  docker ps
+  224  docker stats
+  225  docker stats a86b0441a3dc
+  226  docker ps
+  227  docker exec 40f410c94f20 ps -eaf
+  228  ps -eaf | grep jenkins.war
+  229  clear
+  230  docker ps
+  231  docker top 40f410c94f20
+  232  ps -eaf
+  233  clear
+  234  docker top 40f410c94f20
+  235  ps -eaf | grep jenkins.sh
+  236  clear
+  237  docker run -itd ubuntu
+  238  docker run -d jenkins'
+  239  docker run -d jenkins
+
+=================================================
+Docker Volume
+====================================================
+- Containers are EMPheral
+
+Goal? 
+How to make data persistance beyond a containers lifecycle.
+
+Solution?
+=============================
+- Docker Volume
+https://www.devopsschool.com/blog/understand-docker-volume-from-beginner-to-deep-dive-level/
+
+- Volume - /var/lib/docker/volumes
+
+ 298  docker volume
+  299  docker volume ls
+  300  ls
+  301  docker volume ls
+  302  docker volume prune
+  303  clear
+  304  ls
+  305  docker volume ls
+  306  docker volume create dev
+  307  docker volume ls
+  308  ls
+  309  docker run -itd -v dev:/opt/raju ubuntu
+  310  docker ps
+  311  docker exec 820faf4a9a7a df -kh
+  312  clear
+  313  docker exec 820faf4a9a7a touch /opt/raju/ramukaka.txt
+  314  docker exec 820faf4a9a7a ls /opt/raju/
+  315  ls
+  316  cd dev/
+  317  ls
+  318  cd _data/
+  319  ls
+  320  touch raju.txt
+  321  docker exec 820faf4a9a7a ls /opt/raju/
+  322  docker stop 820faf4a9a7a
+  323  ls
+  324  docker rm 820faf4a9a7a
+  325  ls
+  326  docker run -itd -v dev:/opt/raju ubuntu
+  327  docker p
+  328  docker ps
+  329  docker exec 99af84ae1f7f ls /opt/
+  330  docker exec 99af84ae1f7f ls /opt/raju
+332  history
+  333  clear
+  334  ls
+  335  docker volume ls
+  336  docker volume create qa1 qa2
+  337  docker volume create qa1
+  338  docker volume create qa2
+  339  docker run -itd -v qa1:one -v qa2:two ubuntu
+  340  docker run -itd -v qa1:/opt/one -v qa2:/opt/two ubuntu
+  341  docker ps
+  342  docker exec cea70c05b3f9 ls /opt
+  343  docker ps
+  344  docker stop cea70c05b3f9 99af84ae1f7f
+  345  docker volume ls
+  346  docker volume rm qa2 qa1
+  347  docker rm cea70c05b3f9 99af84ae1f7f
+  348  docker volume ls
+  349  docker rm cea70c05b3f9 99af84ae1f7f
+  350  docker volume rm qa2 qa1
+
+
+
+- mount - any place in HOST Machine
+  359  ls
+  360  pwd
+  361  docker run -itd -v /opt/bkp:/opt/ddd ubuntu
+  362  docker ps
+  365  docker exec 363957f9915a ls /opt/
+  366  docker exec 363957f9915a ls /opt/ddd
+  367  ls
+  368  touch sdfsf
+  369  docker exec 363957f9915a ls /opt/ddd
+  370  pwd
+
+
+- tempfs - host memory
+
+
+
+
+
+
+
+
+
+
+
+
+
+
