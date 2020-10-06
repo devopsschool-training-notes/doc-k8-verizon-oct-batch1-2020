@@ -202,12 +202,84 @@ https://www.devopsschool.com/blog/understand-docker-volume-from-beginner-to-deep
 - tempfs - host memory
 
 
+13.233.124.225
 
 
+================When you create a container from an Image
+	---- All Layers get merged into ONE Layer
+	---- READ & Write
+	----
+		diff - Get Copied here also  & if you stop - this delta get persisted
+		merged - You do here..  & if you stop - this get deleted.,
 
 
-
-
+ 412  docker images
+  413  docker rmi ubuntu jenkins
+  414  clear
+  415  docker images
+  416  docker info
+  417  cd /var/lib/docker/
+  418  ls
+  419  clear
+  420  ls -la
+  421  cd overlay2
+  422  clear
+  423  ls
+  424  du -sh .
+  425  docker pull ubuntu
+  426  ls
+  427  du -h --max-depth=1
+  428  cd ./75436088dafe58057c69498e75b068529413fbafadfa4f32502f3293e973f8d6
+  429  clear
+  430  l
+  431  s
+  432  ls
+  433  cd diff/
+  434  clear
+  435  ls
+  436  pwd
+  437  docker images
+  438  docker history ubuntu
+  439  clear
+  440  docker history ubuntu
+  441  ls /var/lib/docker/
+  442  clear
+  443  lsw
+  444  docker images
+  445  docker inspect ubuntu
+  446  clear
+  447  ls
+  448  cd ../..
+  449  ls
+  450  clear
+  451  ls
+  452  docker images
+  453  docker ps
+  454  docker run -itd ubuntu
+  455  ls
+  456  du -sh 1cbf8065989a3893727145364f4e7b8e9779d6fd108bb74b4545c8cb5554d1b1
+  457  du -sh 1cbf8065989a3893727145364f4e7b8e9779d6fd108bb74b4545c8cb5554d1b1-init
+  458  clear
+  459  ls
+  460  docker run -itd ubuntu
+  461  ls
+  462  clear
+  463  cd 1cbf8065989a3893727145364f4e7b8e9779d6fd108bb74b4545c8cb5554d1b1
+  464  ls
+  465  cd df -kh
+  466  df -kh
+  467  docker ps
+  468  docker exec 580ae0e3a08d touch /opt/devops.txt
+  469  clear
+  470  ls
+  471  cd ..
+  472  ls
+  473  find . -name devops.txt
+  474  docker ps
+  475  docker stop 580ae0e3a08d
+  476  find . -name devops.txt
+  477  ls
+  478  history
 
 
 
