@@ -89,11 +89,92 @@ What about if i keep 1 CMD and 1 Entrpoint
 
 https://www.devopsschool.com/tutorial/docker/dockerfile/dockerfile-example-sample-lab.html
 
+===============================================================================
+===============================================================================
+What is Docker Compose?
+==============================
+	is a Tool
+	To Automate Workflow with docker
+	Used by Image Dev.
+
+docker-compose
+		read one file (docker-compose.yaml)
+		contains
+			SERVICE(S)
+				SERVICE 1 (WEB)
+					build - argument(dockerfile)
+					image - argument(imagename)
+					volume - argument(vol name)
+					network - argument
+					port - argument
+					env - argument
+	
+				SERVICE 2 (APP)
+
+				SERVICE 3 (DB)
+		===================================================
+		docker-compose up
+		docker-compose down
+		docker-compose up
+		docker-compose start 
+		docker-compose stop 
+		docker-compose rm
+		docker-compose logs
+		docker-compose ps
 
 
+ 622  sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  623  sudo chmod +x /usr/local/bin/docker-compose
+  624  sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+  625  docker-compose --version
+  626  clear
+  627  ls
+  628  vi docker-compose.yaml
+  629  docker-compose ps
+  630  docker-compose -h
+  631  clear
+  632  docker-compose up -d
+  633  docker-compose ps
+  634  docker-compose logs
+  635  docker-compose stop
+  636  docker-compose ps
+  637  docker-compose start
+  638  docker-compose ps
 
-
-
+-------------------docker-compose.yaml-------------------
+version: '2'
+services:
+  wordpress:
+    image: wordpress:latest # https://hub.docker.com/_/wordpress/
+    ports:
+      - 80:80 # change ip if required
+    volumes:
+      - ./wp-app:/var/www/html # Full wordpress project
+      #- ./plugin-name/trunk/:/var/www/html/wp-content/plugins/plugin-name # Plugin development
+      #- ./theme-name/trunk/:/var/www/html/wp-content/themes/theme-name # Theme development
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: password
+    depends_on:
+      - db
+    networks:
+      - wordpress-network
+  db:
+    image: mysql:latest # https://hub.docker.com/_/mysql/ - or mariadb https://hub.docker.com/_/mariadb
+    ports:
+      - 3306:3306 # change ip if required
+    volumes:
+      - ./wp-data:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_ROOT_PASSWORD: password
+    networks:
+      - wordpress-network
+networks:
+  wordpress-network:
+      driver: bridge
 
 
 
