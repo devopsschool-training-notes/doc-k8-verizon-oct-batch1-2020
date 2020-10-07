@@ -1,0 +1,99 @@
+QA
+================================
+CMD vs Entrypoint
+
+- demo
+	on hub.docker.com
+- Pvt repo
+- Example of dockerfile
+
+Using a docker file - how can we pass host machine folder directory dynamically so when docker file executes it reads contents from host machine
+--- ADD
+--- COPY
+
+
+Can we read a host machine env var using dockerfile?
+------------
+Any dockerfile sample we have which is making a Springboot app as a Containarized one? 
+How to run Springboot app?
+-------------
+OS -> JDK -> SB -> APP+DB
+
+
+ROOTFS -> JDK -> SB -> APP+DB
+=================================
+	Image
+
+docker run Springboot app 
+
+------------
+Could you please explain the Docker and its container management with any realtime examples ? like you did with bicycle ... please provide any realtime examples of working of Docker with containers. 
+==========================================================
+Why container?
+	TO Run APP?
+		but with 
+			Cheaper
+			Faster
+
+https://www.devopsschool.com/blog/devopsschool-github-referenece/
+
+How to work with Pvt repo?
+=======================================
+docker pull	
+docker push
+docker login
+docker logout
+		Registry
+docker info
+	registry: https://index.docker.com/
+	
+Method 1 - You do not want to change default registry
+Sc1 - docker pull jenkins
+	docker pull https://index.docker.com/jenkins
+Sc2 - artifactory - http://4.5.6.7:8080/verx34
+	docker pull http://4.5.6.7:8080/verx34
+	docker push http://4.5.6.7:8080/verx34
+	docker login http://4.5.6.7:8080/verx34
+
+Method 2 - You do not want to change default registry
+https://stackoverflow.com/questions/33054369/how-to-change-the-default-docker-registry-from-docker-io-to-my-private-registry
+
+
+Working with Private repo
+https://www.devopsschool.com/blog/?s=docker+artifactory
+
+================================
+CMD vs Entrypoint
+
+
+How to set PID1?
+How to customize or change PID1??
+==============================
+CMD VS ENTRYPOINT
+================================
+Initially 
+	Docker intro CMD to set PID1.
+	CMD can be replaced.
+		UBUNTU
+
+	Entrpoint
+	- Entrpoint CAN NOT replaced.
+		jenkins
+
+===================================
+Assignment
+=====================
+What about if i keep 2 CMD
+What about if i keep 2 Entrpoint 
+What about if i keep 1 CMD and 1 Entrpoint 
+
+https://www.devopsschool.com/tutorial/docker/dockerfile/dockerfile-example-sample-lab.html
+
+
+
+
+
+
+
+
+
