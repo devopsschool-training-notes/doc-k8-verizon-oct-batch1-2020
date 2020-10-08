@@ -1,0 +1,243 @@
+How a workstation connect to API server?
+===========================================
+
+Workstation
+	- kubectl
+		- ~/.kube/config
+
+What is content of config?
+====================================
+Clustor(s)
+	Clustor1 - http://api-server
+	Clustor2 - http://api-server
+	Clustor3 - http://api-server
+User(S)
+	User1 - Cert
+	User2 - Cert
+	User3 - Cert
+Context(S)
+	Context1 = Clustor1 + User2 
+	Context2 = Clustor2 + User1 
+
+curr-context
+	Context2
+
+=========================================
+
+[centos@ip-172-31-2-36 rajeshkumar]$ kubectl get pods
+No resources found in default namespace.
+[centos@ip-172-31-2-36 rajeshkumar]$
+
+
+What are resources and its version?
+What is namespace?
+
+
+[centos@ip-172-31-2-36 rajeshkumar]$ kubectl
+kubectl controls the Kubernetes cluster manager.
+
+ Find more information at: https://kubernetes.io/docs/reference/kubectl/overview/
+
+Basic Commands (Beginner):
+  create        Create a resource from a file or from stdin.
+  expose        Take a replication controller, service, deployment or pod and expose it as a new
+Kubernetes Service
+  run           Run a particular image on the cluster
+  set           Set specific features on objects
+
+Basic Commands (Intermediate):
+  explain       Documentation of resources
+  get           Display one or many resources
+  edit          Edit a resource on the server
+  delete        Delete resources by filenames, stdin, resources and names, or by resources and label
+selector
+
+Deploy Commands:
+  rollout       Manage the rollout of a resource
+  scale         Set a new size for a Deployment, ReplicaSet or Replication Controller
+  autoscale     Auto-scale a Deployment, ReplicaSet, or ReplicationController
+
+Cluster Management Commands:
+  certificate   Modify certificate resources.
+  cluster-info  Display cluster info
+  top           Display Resource (CPU/Memory/Storage) usage.
+  cordon        Mark node as unschedulable
+  uncordon      Mark node as schedulable
+  drain         Drain node in preparation for maintenance
+  taint         Update the taints on one or more nodes
+
+Troubleshooting and Debugging Commands:
+  describe      Show details of a specific resource or group of resources
+  logs          Print the logs for a container in a pod
+  attach        Attach to a running container
+  exec          Execute a command in a container
+  port-forward  Forward one or more local ports to a pod
+  proxy         Run a proxy to the Kubernetes API server
+  cp            Copy files and directories to and from containers.
+  auth          Inspect authorization
+
+Advanced Commands:
+  diff          Diff live version against would-be applied version
+  apply         Apply a configuration to a resource by filename or stdin
+  patch         Update field(s) of a resource using strategic merge patch
+  replace       Replace a resource by filename or stdin
+  wait          Experimental: Wait for a specific condition on one or many resources.
+  convert       Convert config files between different API versions
+  kustomize     Build a kustomization target from a directory or a remote url.
+
+Settings Commands:
+  label         Update the labels on a resource
+  annotate      Update the annotations on a resource
+  completion    Output shell completion code for the specified shell (bash or zsh)
+
+Other Commands:
+  alpha         Commands for features in alpha
+  api-resources Print the supported API resources on the server
+  api-versions  Print the supported API versions on the server, in the form of "group/version"
+  config        Modify kubeconfig files
+  plugin        Provides utilities for interacting with plugins.
+  version       Print the client and server version information
+
+Usage:
+  kubectl [flags] [options]
+
+Use "kubectl <command> --help" for more information about a given command.
+Use "kubectl options" for a list of global command-line options (applies to all commands).
+[centos@ip-172-31-2-36 rajeshkumar]$
+
+ 24  kubectl get pods
+   25  clear
+   26  kubectl
+   27  clear
+   28  kubectl
+   29  kubectl api-resources
+   30  clear
+   31  kubectl api-resources | wc -l
+   32  kubectl api-resources
+   33  clear
+   34  kubectl
+   35  clear
+   36  kubectl api-versions
+   37  kubectl api-resources
+
+========================================================================
+========================================================================
+
+Magic Pattern to use to work with All Resources.
+=============================================
+
+What can you do with API or How to use API?
+============================================
+CRUD
+	Create 
+		CMD
+			create
+		YAML
+			create -f
+	Read
+		CMD
+			get
+	Edit/Update
+		CMD
+			edit
+		YAML
+			apply
+	Delete
+		CMD
+			delete
+		YAML
+			delete -f
+=====================================
+ 38  history
+   39  kubectl version
+   40  clear
+   41  kubectl version
+   42  kubectl api-resources
+   43  clear
+   44  kubectl api-resources
+   45  clear
+   46  kubectl
+   47  clear
+   48  kubectl get ns
+   49  kubectl get pods
+   50  kubectl get pods -n=kube-system
+   51  kubectl create ns dev
+   52  kubectl create ns qa
+   53  kubectl get ns
+   54  clear
+   55  kubectl edit ns dev
+   56  kubectl delete ns dev
+   57  kubectl get ns
+   58  history
+
+
+POD
+========================================================
+========================================================
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-pod
+  labels: 
+    app: webserver
+spec:
+  containers:
+  - name: hello-ctr
+    image: nginx
+    ports:
+    - containerPort: 80
+
+
+ 59  clear
+   60  kubectl get ns
+   61  kubectl create ns rajesh
+   62  kubectl get ns
+   63  clear
+   64  ls
+   65  history
+   66  clear
+   67  kubectl
+   68  clear
+   69  kubectl create -h
+   70  clear
+   71  ls
+   72  cd ..
+   73  ls
+   74  cd rajeshkumar
+   75  ls
+   76  clear
+   77  ls
+   78  vi pod.yaml
+   79  kubectl create -f pod.yaml -n=rajesh
+   80  kubectl get pods -n=rajesh
+   81  kubectl create -f pod.yaml -n=rajesh
+   82  kubectl create -f pod.yaml -n=qa
+   83  kubectl get pods
+   84  kubectl get pods --all-namespaces
+   85  clear
+   86  ls
+   87  kubectl get pods -n-rajesh
+   88  kubectl get pods -n=rajesh
+   89  kubectl edit pod hello-pod -n=rajesh
+   90  kubectl get pods -n=rajesh
+   91  kubectl get pods -n=rajesh --show-labels
+   92  ls
+   93  vi pod.yaml
+   94  kubectl apply -f pod.yaml -n=rajesh
+   95  kubectl get pods -n=rajesh --show-labels
+   96  clear
+   97  kubectl delete pod hello-pod -n=rajesh
+   98  kubectl delete -f pod.yaml -n=qas
+   99  kubectl delete -f pod.yaml -n=qa
+  100  history
+
+
+	
+
+
+
+
+
+
+
