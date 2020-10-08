@@ -246,11 +246,14 @@ kubeadm join 172.31.2.36:6443 --token a6xyt3.uy3o3jazrf94mohc \
     --discovery-token-ca-cert-hash sha256:44ac551115443955456e97dd94f34a4fc8b747e6238da0bfd6d5aa716926c4f8
 
 
+=================================================================
+=================================================================
 
 
 
+https://www.devopsschool.com/blog/how-to-delete-remove-clean-existing-corrupted-or-old-kubeadm-kubernetes-clusters-setup/
 
-
+https://www.devopsschool.com/blog/kubernetes-error-kubeadm-related-errors-and-solutions/
 
 
 
