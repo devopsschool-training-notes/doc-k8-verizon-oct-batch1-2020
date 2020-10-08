@@ -392,6 +392,97 @@ spec:
   222  kubectl delete pod hello-rc-2ccg4 hello-rc-7m79j hello-rc-lmpvw hello-rc-                       nwhh7 -n=rajesh
   223  kubectl get pods -n=rajesh
 
+========================================================================
+Deployment
+=================================================
+Replication
+Controller
+Versioning
+Rollout
+RollBack
+
+Image
+===========================
+scmgalaxy/nginx-devopsschoolv1
+scmgalaxy/nginx-devopsschoolv2
+
+kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1 -n=rajesh
+
+ 229  kubectl create -h
+  230  clear
+  231  kubectl create deployment -h
+  232  clear
+  233  kubectl get deploy -n=rajesh
+  234  kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1
+  235  kubectl get deploy -n=rajesh
+  236  kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1
+  237  kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1 -n=rajesh
+  238  kubectl get deploy -n=rajesh
+  239  clear
+  240  kubectl get deploy -n=rajesh
+  241  kubectl edit deploy my-dep -n=rajesh
+  242  kubectl get deploy -n=rajesh
+  243  clear
+  244  ls
+  245  cd rajeshkumar/
+  246  ls
+  247  kubectl get deploy -n=rajesh
+  248  kubectl get deploy my-dep -n=rajesh
+  249  kubectl get deploy my-dep -n=rajesh -o yaml
+  250  clear
+  251  kubectl get deploy my-dep -n=rajesh -o yaml >> dep.yaml
+  252  ls
+  253  vi dep.yaml
+  254  vi dep.yaml
+  255  kubectl get deploy -n=rajesh -o yaml
+  256  kubectl get deploy -n=rajesh
+  257  clear
+  258  kubectl get deploy -n=rajesh
+  259  kubectl apply -f dep.yaml -n=rajesh
+  260  kubectl get deploy -n=rajesh
+  261  kubectl get rc -n=rajesh
+  262  kubectl  delete rc hello-rc -n=rajesh
+  263  clear
+  264  ls
+  265  kubectl get deploy -n=rajesh
+  266  kubectl scale -h
+  267  clear
+  268  kubectl scale --replicas=3 deployment
+  269  kubectl get deploy -n=rajesh
+  270  kubectl scale --replicas=3 deployment my-dep -n=rajesh
+  271  kubectl get deploy -n=rajesh
+  272  kubectl get pods -n=rajesh
+  273  kubectl delete pod my-dep-747b4ffb56-4mz57 my-dep-747b4ffb56-9vs2m my-dep-747b4ffb56-wf524 -n=rajesh
+  274  kubectl get pods -n=rajesh
+  275  clear
+
+
+ 277  clear
+  278  kubectl get pods -n=rajesh
+  279  kubectl get deploy -n=rajesh
+  280  kubectl delete deploy my-dep1 -n=rajesh
+  281  kubectl get pods -n=rajesh
+  282  kubectl get pods -n=rajesh -o wide
+  283  curl http://10.44.0.810.44.0.8
+  284  clear
+  285  curl http://10.44.0.8
+  286  kubectl delete deploy my-dep1 -n=rajesh
+  287  kubectl get deploy -n=rajesh
+  288  kubectl
+  289  clear
+  290  kubectl rollout -h
+  291  kubectl rollout history deploy my-dep -n=rajesh
+  292  clear
+  293  kubectl rollout history deploy my-dep -n=rajesh
+  294  kubectl edit deploy my-dep -n=rajesh
+  295  kubectl rollout history deploy my-dep -n=rajesh
+  296  kubectl get pods -n=rajesh -o wide
+  297  curl http://10.44.0.7
+  298  clerar
+
+
+
+
 
 
 
