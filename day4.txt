@@ -242,12 +242,76 @@ Workstation =  15.206.164.99
 centos
 centos123
 ===============================================
+Working with Pods?
+=================================
+  describe      Show details of a specific resource or group of resources
+  logs          Print the logs for a container in a pod
+  attach        Attach to a running container
+  exec          Execute a command in a container
+  port-forward  Forward one or more local ports to a pod
+  proxy         Run a proxy to the Kubernetes API server
+  cp            Copy files and directories to and from containers.
+  auth          Inspect authorization
 
+  108  kubectl
+  109  clear
+  110  kubectl get pods -n=rajesh
+  111  kubectl describe pod hello-pod -n=rajesh
+  112  clear
+  113  kubectl get pods -n=rajesh
+  114  kubectl logs hello-pod
+  115  kubectl logs hello-pod -n=rajesh
+  116  watch kubectl logs hello-pod -n=rajesh
+  117  history
 
+   65  kubectl get pods
+   66  kubectl get pods -n=rajesh -o wide
+   67  curl http://10.44.0.1
+   68  clear
 
+ 117  history
+  118  clear
+  119  ls
+  120  kubectl
+  121* clear l
+  122  kubectl logs
+  123  kubectl logs -h
+  124  cleart
+  125  clear
+  126  kubectl get pods -n=rajesh
+  127  kubectl attach hello-pod -n=rajesh
+  128  clear
+  129  ls
+  130  clear
+  131  kubectl get pods -n=rajesh
+  132  kubectl exec hello-pod ls
+  133  kubectl exec hello-pod ls -n=rajesh
+  134  clear
+  135  kubectl exec -it hello-pod /bin/bash
+  136  kubectl exec -it hello-pod /bin/bash -n=rajesh
+  137  history
 
+  # Listen on ports 5000 and 6000 locally, forwarding data to/from ports 5000
+and 6000 in the pod
+  kubectl port-forward pod/hello-pod 8888:80
+ kubectl port-forward pod/hello-pod 8888:80 -n=rajesh
 
+   73  kubectl cp pod.yaml hello-pod:/opt -n=rajesh
+   74  kubectl cp -h
+   75  clear
+   76  kubectl exec hello-pod -n=rajesh ls /opt
 
-
-
+ 79  kubectl auth
+   80  kubectl auth can-i
+   81  kubectl auth can-i pod
+   82  kubectl auth can-i create pod
+   83  kubectl reconcile
+   84  kubectl auth reconcile
+   85  kubectl auth reconcile -h
+   86  kubectl auth reconcile -f fdff
+   87  ls
+   88  kubectl auth reconcile -f pod.yaml
+   89  kubectl auth can-i
+   90  kubectl auth can-i create pod
+   91  kubectl auth can-i create poddd
 
