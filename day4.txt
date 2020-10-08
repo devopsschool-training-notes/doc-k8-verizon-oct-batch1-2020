@@ -481,8 +481,24 @@ kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1 -n=rajes
   298  clerar
 
 
+================================
+Rollout	- Rolling out new Image Version
+RollBack - Rolling back new Image Version
+----------------------------------------
+		Without Single SECOND of Downtime
 
 
-
-
+kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1 -n=rajesh
+kubectl scale --replicas=10 deployment my-dep -n=rajesh
+kubectl get pod -o wide -n=rajesh
+curl http://10.44.0.7
+kubectl rollout history deploy my-dep -n=rajesh
+kubectl rollout status deploy my-dep -n=rajesh
+kubectl edit deploy my-dep -n=rajesh	# scmgalaxy/nginx-devopsschoolv2
+kubectl rollout status deploy my-dep -n=rajesh
+kubectl rollout history deploy my-dep -n=rajesh
+kubectl get pod -o wide -n=rajesh
+curl http://10.44.0.7
+kubectl rollout undo deploy my-dep --to-revision=1 -n=rajesh
+kubectl rollout status deploy my-dep -n=rajesh
 
