@@ -313,6 +313,99 @@ spec:
 https://www.devopsschool.com/blog/setup-nfs-server-and-use-inside-a-kubernetes-pods-in-rhel-centos7/
 
 https://www.devopsschool.com/blog/kubernetes-persistentvolume-and-persistentvolumeclaim-using-nfs-volume-types/
+=================================================================
+- RBAC
+- Auto Scaling
+- Multiple Master
+- INgress
+- Expose demo
+- 
+====================================
+Authentication  - How to get Login into k8s
+https://kubernetes.io/docs/reference/access-authn-authz/authentication/
+	- certification
+
+Authorization - What you are allowed to do?
+https://kubernetes.io/docs/reference/access-authn-authz/authorization/
+	- RBAC
+	- Role based Access Control
+
+	serviceaccounts
+		roles		using rolebindings
+		clusterroles 	using clusterrolebindings
+	Normal(Manual)
+		roles		using rolebindings
+		clusterroles	using clusterrolebindings
+		
+============================================
+openssl x509 -req -in employee.csr -CA /etc/kubernetes/pki/ca.crt -CAkey /etc/kubernetes/pki/ca.key -CAcreateserial -out employee.crt -days 500
+
+
+======USER At LAPTOP==================
+kubectl create namespace office
+
+openssl genrsa -out employee.key 2048
+
+openssl req -new -key employee.key -out employee.csr -subj "/CN=employee/O=bitnami"
+
+======ADMIN AT MASTER using root==================
+openssl x509 -req -in employee.csr -CA /etc/kubernetes/pki/ca.crt -CAkey /etc/kubernetes/pki/ca.key -CAcreateserial -out /home/ec2-user/tecnotree/employee.crt -days 500
+
+======USER At LAPTOP==================
+kubectl config set-credentials employee --client-certificate=/home/ec2-user/tecnotree/employee.crt  --client-key=/home/ec2-user/tecnotree/employee.key
+
+kubectl config set-context employee-context --cluster=kubernetes --namespace=office --user=employee
+
+kubectl --context=employee-context get pods
+
+https://github.com/devopsschool-training-notes/Kubernetes-Tecnotree-Nov-2019/blob/master/SUPERNOTES.TXT
+=======================================================================
+
+
+https://kubernetes.io/docs/tasks/administer-cluster/highly-available-master/
+
+
+INgress
+=====================================
+
+
+devopsschool.com/account ----> serviceA
+devopsschool.com/profile ---> serviceB
+
+
+account.devopsschool.com ----> serviceA
+profile.devopsschool.com ---> serviceB
+
+
+https://www.devopsschool.com/blog/kubernetes-ingress-tutorials-with-examples-and-lab-using-loadbalancer/
+https://www.devopsschool.com/blog/kubernetes-ingress-tutorials-with-examples-and-lab-using-nodeport/
+==============================
+What is minikube
+	ONE NODE Clustor
+	- Vm
+		Master
+		Worker
+	-----------------------
+	VirtualBox
+	Or
+	HYperBox
+
+Step 1- Install VB
+Step 2 - Downloand minikube.exe
+Step 3 - minikube start
+https://www.devopsschool.com/videos/show/minikube?type=video
+
+https://www.devopsschool.com/tutorial/kubernetes/labs/
+
+https://www.devopsschool.com/videos/show/cka?type=video
+================================
+rajesh@devopsschool.com
+
+
+
+
+
+
 
 
 
