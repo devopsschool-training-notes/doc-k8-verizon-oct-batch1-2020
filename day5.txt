@@ -1,0 +1,145 @@
+Service Types
+	ClustorIP
+		- This service would get IP address of POD network.
+		- This is default service
+		
+	NodePort
+		- This service Can be accessible at Port of any node of the clustor.
+		- The ClustorIP service which is Exposeed at each Node - call NodePort Service.
+		--------------------
+		ClustorIP Service Get created.
+		& ClustorIP Service get exposed at Port of each nOde.
+
+	Loadbalancer
+		- This service Can be accessible outside of clustor.
+
+		ClustorIP Service Get created.
+		& ClustorIP Service get exposed at Port of each nOde.
+		
+		& One External LoadBalancer gets created 
+		& Each node of the clustor get loadbalanced by E LB.
+
+13.232.40.16
+===================================
+
+
+
+
+
+
+
+Assignment
+============================
+[centos@ip-172-31-2-36 rajeshkumar]$ kubectl get svc
+NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   42h
+[centos@ip-172-31-2-36 rajeshkumar]$
+
+kubectl create service clusterip my-cs --tcp=5678:80 -n=rajesh
+
+
+
+svc				pod1					pod2
+
+10.106.246.21:80		10.106.246.22:80		10.106.246.23:80
+10.106.246.21:5678		10.106.246.22:80		10.106.246.23:80
+10.106.246.21:5678		10.106.246.22:8080		10.106.246.23:8080
+
+
+
+ 1009  clear
+ 1010  kubectl get pods -n=rajesh
+ 1011  ckear
+ 1012  clear
+ 1013  kubectl get pods -n=rajesh
+ 1014  clear
+ 1015  kubectl get pods -n=rajesh
+ 1016  kubectl get svc
+ 1017  kubectl get svc -n=rajesh
+ 1018  ls
+ 1019  kubectl apply -f pod.yaml -n=rajesh
+ 1020  kubectl get pods -n=rajesh
+ 1021  kubectl get pods -n=rajesh -o wide --show-labels
+ 1022  clear
+ 1023  kubectl get pods -n=rajesh -o wide --show-labels
+ 1024  more pod.yaml
+ 1025  vi pod.yaml
+ 1026  kubectl apply -f pod.yaml -n=rajesh
+ 1027  kubectl get pods -n=rajesh -o wide --show-labels
+ 1028  clear
+ 1029  kubectl get pods -n=rajesh -o wide --show-labels
+ 1030  kubectl
+ 1031  clear
+ 1032  ls
+ 1033  kubectl get pods -n=rajesh -o wide --show-labels
+ 1034  kubectl create -h
+ 1035  clear
+ 1036  kubectl create service -h
+ 1037  kubectl create service clusterip -h
+ 1038  clear
+ 1039  kubectl create service clusterip my-cs --tcp=5678:80 -n=rajesh
+ 1040  kubectl get svc -n=rajesh
+ 1041  kubectl describe svc my-cs -n=rajesh
+ 1042  clear
+ 1043  kubectl get svc -n=rajesh --show-labels
+ 1044  kubectl get pods -n=rajesh --show-labels
+ 1045  kubectl describe svc my-cs -n=rajesh
+ 1046  kubectl get svc -n=rajesh --show-labels;kubectl get pods -n=rajesh --show-labels;kubectl describe svc my-cs -n=rajesh
+ 1047  clear
+ 1048  kubectl get svc -n=rajesh --show-labels;kubectl get pods -n=rajesh --show-labels;kubectl describe svc my-cs -n=rajesh
+ 1049  vi pod.yaml
+ 1050  kubectl apply -f pod.yaml -n=rajesh
+ 1051  clear
+ 1052  kubectl get svc -n=rajesh --show-labels;kubectl get pods -n=rajesh --show-labels;kubectl describe svc my-cs -n=rajesh
+ 1053  kubectl edit svc my-cs -n=rajesh
+ 1054  kubectl edit pod hello-pod -n=rajesh
+ 1055  clear
+ 1056  kubectl get svc -n=rajesh --show-labels;kubectl get pods -n=rajesh --show-labels;kubectl describe svc my-cs -n=rajesh
+ 1057  kubectl edit pod hello-pod -n=rajesh
+ 1058  kubectl edit svc my-cs -n=rajesh
+ 1059  kubectl get svc -n=rajesh --show-labels;kubectl get pods -n=rajesh --show-labels;kubectl describe svc my-cs -n=rajesh
+ 1060  clear
+ 1061  kubectl edit svc my-cs -n=rajesh
+ 1062  kubectl get svc -n=rajesh --show-labels;kubectl get pods -n=rajesh --show-labels;kubectl describe svc my-cs -n=rajesh
+ 1063  kubectl edit pod hello-pod -n=rajesh
+ 1064  clear
+ 1065  kubectl get svc -n=rajesh --show-labels;kubectl get pods -n=rajesh --show-labels;kubectl describe svc my-cs -n=rajesh
+ 1066  vi pod.yaml
+ 1067  kubectl create -f pod.yaml -n=rajesh
+ 1068  kubectl get svc -n=rajesh --show-labels;kubectl get pods -n=rajesh --show-labels;kubectl describe svc my-cs -n=rajesh
+ 1069  vi pod.yaml
+ 1070  kubectl apply -f pod.yaml =n=rajesh
+ 1071  clear
+ 1072  kubectl apply -f pod.yaml -n=rajesh
+ 1073  kubectl get svc -n=rajesh --show-labels;kubectl get pods -n=rajesh --show-labels;kubectl describe svc my-cs -n=rajesh
+ 1074  curl http://10.106.246.21
+ 1075  clear
+ 1076  curl http://10.106.246.21
+ 1077  kubectl get svc -n=rajesh --show-labels;kubectl get pods -n=rajesh --show-labels;kubectl describe svc my-cs -n=rajesh
+ 1078  curl http://10.106.246.21
+ 1079  curl http://10.106.246.21:5678
+ 1080  clear
+ 1081  ls
+ 1082  clear
+ 1083  kubectl get pods -n=rajesh
+ 1084  kubectl edit pod hello-pod -n=rajesh
+ 1085  kubectl edit pod hello-pod1 -n=rajesh
+ 1086  clear
+ 1087  kubectl get pods -n=rajesh
+ 1088  kubectl get pods -n=rajesh -o wide
+ 1089  curl http://10.44.0.1
+ 1090  curl http://10.44.0.2
+ 1091  kubectl get svc -n=rajesh --show-labels;kubectl get pods -n=rajesh --show-labels;kubectl describe svc my-cs -n=rajesh
+ 1092  clear
+ 1093  curl http://10.106.246.21:5678
+ 1094  watch curl http://10.106.246.21:5678
+ 1095  history
+
+
+
+
+
+
+
+
+
