@@ -135,6 +135,58 @@ svc				pod1					pod2
  1094  watch curl http://10.106.246.21:5678
  1095  history
 
+=============================================================
+=============================================================
+
+
+NodePort
+		- This service Can be accessible at Port of any node of the clustor.
+		- The ClustorIP service which is Exposeed at each Node - call NodePort Service.
+		--------------------
+		ClustorIP Service Get created.
+		& ClustorIP Service get exposed at Port of each nOde.
+
+	Loadbalancer
+		- This service Can be accessible outside of clustor.
+
+		ClustorIP Service Get created.
+		& ClustorIP Service get exposed at Port of each nOde.
+		
+		& One External LoadBalancer gets created 
+		& Each node of the clustor get loadbalanced by E LB.
+
+
+
+kubectl create service nodeport my-ns --tcp=5678:80
+
+
+
+ 1110  clear
+ 1111  kubectl create service nodeport my-ns --tcp=5678:80 -n=rajesh
+ 1112  kubectl get svc -n=rajesh
+ 1113  kubectl describe svc my-ns -n=rajesh'
+ 1114  kubectl describe svc my-ns -n=rajesh
+ 1115  kubectl get svc -n=rajesh --show-labels;kubectl get pods -n=rajesh --show-labels;kubectl describe svc my-cs -n=rajesh
+ 1116  clear
+ 1117  kubectl get svc -n=rajesh
+ 1118  kubectl edit svc my-ns -n=rajesh
+ 1119  clear
+ 1120  kubectl describe svc my-ns -n=rajesh
+ 1121  kubectl edit svc my-ns -n=rajesh
+ 1122  clear
+ 1123  kubectl describe svc my-ns -n=rajesh
+ 1124  kubectl get svc -n=rajesh --show-labels;kubectl get pods -n=rajesh --show-labels;kubectl describe svc my-cs -n=rajesh
+ 1125  kubectl edit svc my-ns -n=rajesh
+ 1126  clear
+ 1127  kubectl describe svc my-ns -n=rajesh
+ 1128  kubectl get svc -n=rajesh
+
+
+
+
+
+
+
 
 
 
