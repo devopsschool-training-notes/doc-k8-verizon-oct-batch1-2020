@@ -180,17 +180,139 @@ kubectl create service nodeport my-ns --tcp=5678:80
  1126  clear
  1127  kubectl describe svc my-ns -n=rajesh
  1128  kubectl get svc -n=rajesh
+==========================================================================
+LoadBalancer
+
+kubectl create service loadbalancer my-lbs --tcp=5678:80 -n=rajesh
 
 
+veri-1282943153.ap-south-1.elb.amazonaws.com
+
+======================================================================
+https://www.devopsschool.com/blog/persistentvolume-persistentvolumeclaim-volumes-using-hostpath/
+
+====== DONE by Admin ====
+===== Clustor =======
+
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: hostpath
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/tmp/devopsschool"
 
 
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: hostpath1
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 3Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/tmp/devopsschool"
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvchostpath
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
 
 
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvchostpath1
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
 
 
+kind: Pod
+apiVersion: v1
+metadata:
+  name: task-pv-pod
+spec:
+  containers:
+    - name: task-pv-container
+      image: scmgalaxy/nginx-devopsschoolv1
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: task-pv-storage
+  volumes:
+    - name: task-pv-storage
+      persistentVolumeClaim:
+        claimName: pvchostpath
 
 
+1162  kubectl create -f pv.yaml
+ 1163  kubectl get pv
+ 1164  kubectl get pvc
+ 1165  kubectl get pvc -n=rajesh
+ 1166  clear
+ 1167  ls
+ 1168  vi pvc.yaml
+ 1169  kubectl create -f pvc.yaml -n=rajesh
+ 1170  kubectl get pvc -n=rajesh
+ 1171  kubectl get pv
+ 1172  vi pv1.yaml
+ 1173  kubectl create -f pv1.yaml
+ 1174  kubectl get pvc -n=rajesh
+ 1175  wacth kubectl get pvc -n=rajesh
+ 1176  watch kubectl get pvc -n=rajesh
+ 1177  kubectl get pvc -n=rajesh
+ 1178  kubectl get pv
+ 1179  clear
+ 1180  kubectl get pv
+ 1181  kubectl get pvc
+ 1182  kubectl get pvc -n=rajesh
+ 1183  clear
+ 1184  vi pvc1.yaml
+ 1185  kubectl create -f pvc1.yaml -n=rajesh
+ 1186  kubectl get pvc -n=rajesh
+ 1187  kubectl get pv
+ 1188  clear
+ 1189  ls
+ 1190  vi pod1.yaml
+ 1191  kubectl create -f pod1.yaml -n=rajesh
+ 1192  kubectl get pod -o wide -n=rajesh
+ 1193  curl http://10.44.0.6
+ 1194  clear
+ 1195  ls
+ 1196  kubectl get pods -n=rajesh
+ 1197  kubectl delete pod task-pv-pod -n=rajesh
+ 1198  kubectl create -f pod1.yaml -n=rajesh
+ 1199  curl http://10.44.0.6
 
+https://www.devopsschool.com/blog/setup-nfs-server-and-use-inside-a-kubernetes-pods-in-rhel-centos7/
+
+https://www.devopsschool.com/blog/kubernetes-persistentvolume-and-persistentvolumeclaim-using-nfs-volume-types/
 
 
 
